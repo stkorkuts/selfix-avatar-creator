@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selfix.AvatarCreator.EntryPoint", "Selfix.AvatarCreator.EntryPoint\Selfix.AvatarCreator.EntryPoint.csproj", "{A7C0F037-B0F3-4CBD-9BD6-3C1E762A1634}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B2E74EF3-FFE2-4FA9-BDE2-D814D36825B0}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Dockerfile = Dockerfile
+		compose.yml = compose.yml
+		.dockerignore = .dockerignore
+		.env = .env
+		.env.example = .env.example
+		Scripts\generate-captions.py = Scripts\generate-captions.py
+		requirements.txt = requirements.txt
+		Templates\dataset-template-lowvram.toml = Templates\dataset-template-lowvram.toml
+		Templates\dataset-template-highvram.toml = Templates\dataset-template-highvram.toml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selfix.AvatarCreator.Shared", "Selfix.AvatarCreator.Shared\Selfix.AvatarCreator.Shared.csproj", "{D74B7A01-7DFD-4C74-B5BC-593B15CDF990}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selfix.AvatarCreator.Infrastructure", "Selfix.AvatarCreator.Infrastructure\Selfix.AvatarCreator.Infrastructure.csproj", "{3192E5A2-E688-492E-AAE0-EB0885280F74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selfix.AvatarCreator.Application", "Selfix.AvatarCreator.Application\Selfix.AvatarCreator.Application.csproj", "{45BFCA3D-D2E9-402A-916E-DB4DAC073B63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selfix.Schema", "Submodules\Selfix.Schema\Selfix.Schema\Selfix.Schema.csproj", "{F898CC7C-FC3D-4440-8B36-AEF4E13D2FC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7C0F037-B0F3-4CBD-9BD6-3C1E762A1634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7C0F037-B0F3-4CBD-9BD6-3C1E762A1634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7C0F037-B0F3-4CBD-9BD6-3C1E762A1634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7C0F037-B0F3-4CBD-9BD6-3C1E762A1634}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D74B7A01-7DFD-4C74-B5BC-593B15CDF990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D74B7A01-7DFD-4C74-B5BC-593B15CDF990}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D74B7A01-7DFD-4C74-B5BC-593B15CDF990}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D74B7A01-7DFD-4C74-B5BC-593B15CDF990}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3192E5A2-E688-492E-AAE0-EB0885280F74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3192E5A2-E688-492E-AAE0-EB0885280F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3192E5A2-E688-492E-AAE0-EB0885280F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3192E5A2-E688-492E-AAE0-EB0885280F74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45BFCA3D-D2E9-402A-916E-DB4DAC073B63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45BFCA3D-D2E9-402A-916E-DB4DAC073B63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45BFCA3D-D2E9-402A-916E-DB4DAC073B63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45BFCA3D-D2E9-402A-916E-DB4DAC073B63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F898CC7C-FC3D-4440-8B36-AEF4E13D2FC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F898CC7C-FC3D-4440-8B36-AEF4E13D2FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F898CC7C-FC3D-4440-8B36-AEF4E13D2FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F898CC7C-FC3D-4440-8B36-AEF4E13D2FC1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

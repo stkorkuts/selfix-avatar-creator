@@ -1,0 +1,59 @@
+networks:
+  selfix-net:
+    external: true
+    name: selfix-net
+
+services:
+  avatar-creator:
+    networks:
+      - selfix-net
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: avatar-creator
+    container_name: avatar-creator
+    environment:
+      - DOTNET_ENVIRONMENT=${DOTNET_ENVIRONMENT:-Local}
+      
+      - Kafka__BootstrapServer=${KAFKA_BOOTSTRAP_SERVER:-broker:29092}
+      - Kafka__Sasl__KafkaSecurityProtocol=${KAFKA_SECURITY_PROTOCOL:-PLAINTEXT}
+      - Kafka__Sasl__KafkaSaslMechanism=${KAFKA_SASL_MECHANISM:-PLAIN}
+      - Kafka__Sasl__Username=${KAFKA_SASL_USERNAME:-}
+      - Kafka__Sasl__Password=${KAFKA_SASL_PASSWORD:-}
+      - Kafka__GroupId=${KAFKA_GROUP_ID:-selfix}
+      - Kafka__TopicInput=${KAFKA_TOPIC_INPUT:-selfix.avatar.create.requests}
+      - Kafka__TopicOutput=${KAFKA_TOPIC_OUTPUT:-selfix.avatar.create.responses}
+      
+      - S3__Endpoint=${S3_ENDPOINT:-https://s3.gis-1.storage.selcloud.ru}
+      - S3__AccessKey=${S3_ACCESS_KEY:-}
+      - S3__SecretKey=${S3_SECRET_KEY:-}
+      - S3__Region=${S3_REGION:-gis-1}
+      - S3__AvatarsBucketName=${S3_BUCKET:-selfix-avatars}
+      - S3__SourceImagesBucketName=${S3_SOURCE_IMAGES_BUCKET:-selfix-temp}
+        
+      - Environment__UnetPath=${ENVIRONMENT_UNET_PATH:-/workspace/models/unet/flux1-dev-fp8-e4m3fn.safetensors}
+      - Environment__ClipLargePath=${ENVIRONMENT_CLIP_LARGE_PATH:-/workspace/models/clip/clip_l.safetensors}
+      - Environment__T5XXLPath=${ENVIRONMENT_T5XXL_PATH:-/workspace/models/clip/t5xxl_fp8_e4m3fn.safetensors}
+      - Environment__VaePath=${ENVIRONMENT_VAE_PATH:-/workspace/models/vae/ae.safetensors}
+      - Environment__TrainScriptPath=${ENVIRONMENT_TRAIN_SCRIPT_PATH:-/workspace/sd-scripts/flux_train_network.py}
+      - Environment__CaptionsScriptPath=${ENVIRONMENT_CAPTIONS_SCRIPT_PATH:-/workspace/input/generate-captions.py}
+      - Environment__InputDir=${ENVIRONMENT_INPUT_DIR:-/workspace/input}
+      - Environment__OutputDir=${ENVIRONMENT_OUTPUT_DIR:-/workspace/output}
+      - Environment__IsHighVram=${ENVIRONMENT_IS_HIGH_VRAM:-false}
+        
+      - Generation__EpochsCount=${GENERATION_EPOCHS_COUNT:-10}
+
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+    
+    volumes:
+      - ${ML_MODELS_PATH:-./models}:/workspace/models:ro
+    
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
